@@ -1,1 +1,1 @@
-echo test ok
+echo "test failing"; exit 1
