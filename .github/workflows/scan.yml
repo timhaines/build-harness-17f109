@@ -1,0 +1,8 @@
+on: [push, pull_request]
+name: Workflow security
+permissions: {}
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "SCAN ref=${{ github.ref }} event=${{ github.event_name }}"
