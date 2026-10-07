@@ -1,0 +1,15 @@
+name: CI gated
+on:
+  workflow_dispatch: {}
+permissions: {}
+jobs:
+  publish:
+    name: Publish
+    if: >-
+      (github.event_name == 'workflow_dispatch' || github.event_name == 'push') &&
+      startsWith(github.ref, 'refs/tags/v')
+    runs-on: 'ubuntu-24.04'
+    environment: release
+    steps:
+      - name: Report
+        run: echo "MARKER event=${{ github.event_name }} ref=${{ github.ref }}"
